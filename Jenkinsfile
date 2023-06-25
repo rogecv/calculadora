@@ -49,7 +49,7 @@ pipeline {
 		stage('Coverage Report') {
 			steps {
 			// Paso para generar el informe de cobertura
-				 bat 'mvn jacoco:prepare-agent test jacoco:report' // Comando para generar el informe de jacoco con Maven
+				 sh 'mvn jacoco:prepare-agent test jacoco:report' // Comando para generar el informe de jacoco con Maven
 			}
 		}
 		stage('Notification') {
