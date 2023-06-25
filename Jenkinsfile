@@ -31,8 +31,7 @@ pipeline {
         
         stage('Git Polling'){
             steps{
-                //git branch: 'main', url: 'https://github.com/gabrielr291/PruebaTeorica'
-                git branch: 'main', credentialsId: 'GitHubKey', url: 'git@github.com:gabrielr291/PruebaTeorica.git'
+                git branch: 'main', credentialsId: 'GitHubKey', url: 'git@github.com:rogecv/calculadora.git'
                 
             }
         }
@@ -70,7 +69,7 @@ pipeline {
 			emailext (
             subject: 'Error en el pipeline de Jenkins',
             body: 'Se ha detectado un error en el pipeline de Jenkins. Por favor, revisa el registro de Jenkins para obtener más detalles.',
-            to: 'gabriel.omar.r29@gmail.com',
+            to: 'rogelio.cisternas@gmail.com',
             recipientProviders: [[$class: 'DevelopersRecipientProvider']]
         )
     }
