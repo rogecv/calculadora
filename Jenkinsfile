@@ -43,7 +43,7 @@ pipeline {
         }
         stage('test maven'){
             steps{
-                sh "mvn test -X"
+                sh "mvn test"
             }
         }
 		stage('Coverage Report') {
