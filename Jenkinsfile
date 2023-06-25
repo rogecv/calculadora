@@ -66,6 +66,9 @@ pipeline {
     }
 	post {
        	always {
+                        script {
+                finalPostActions()
+            }
 			// // Archivar los informes de cobertura
 			// jacoco(execPattern: '**/target/jacoco.exec')
            	// jacoco(classPattern: '**/target/classes', sourcePattern: 'src/main/java')
