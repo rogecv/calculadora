@@ -1,8 +1,3 @@
-properties([
-    pipelineTriggers([
-        [$class: 'ErrorTrigger']
-    ])
-])
 pipeline {
     agent any
     
