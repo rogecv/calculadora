@@ -25,7 +25,7 @@ pipeline {
         
         stage('Git Polling'){
             steps{
-                git branch:'main', credentialsId:'GitHubKey', url:'git@github.com:rogecv/calculadora.git'   
+                git branch:'main', credentialsId:'GitHubKey', url:'https://github.com/rogecv/calculadora.git'   
             }
         }
         
