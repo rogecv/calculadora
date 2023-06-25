@@ -15,11 +15,11 @@ pipeline {
     stages {
         stage('Hello') {
             steps {
-                // echo "Database engine is ${DB_ENGINE}"
-                // echo "DISABLE_AUTH is ${DISABLE_AUTH}"
-                // echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                // echo "Job Name: ${env.JOB_NAME}"
-                // echo "Job Name: ${env.JAVA_HOME}"
+                echo "Database engine is ${DB_ENGINE}"
+                echo "DISABLE_AUTH is ${DISABLE_AUTH}"
+                echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                echo "Job Name: ${env.JOB_NAME}"
+                echo "Job Name: ${env.JAVA_HOME}"
             }
         }
         
@@ -31,9 +31,8 @@ pipeline {
         
         stage('BUILD CON MAVEN'){
             steps{
-                sh "mvn clean install -U -DskipTests -f pom.xml"
-               
-               // sh "mvn -Dmaven.test.failure.ignore=true clean package " //Unix
+                //sh "mvn clean install -U -DskipTests -f pom.xml"
+               sh "mvn -Dmaven.test.failure.ignore=true clean package " //Unix
             }
             post{
                 success{
@@ -42,13 +41,11 @@ pipeline {
                 }
             }
         }
-        
         stage('test maven'){
             steps{
                 sh "mvn test -X"
             }
         }
-		
 		stage('Coverage Report') {
 			steps {
 			// Paso para generar el informe de cobertura
