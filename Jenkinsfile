@@ -21,13 +21,11 @@ pipeline {
                 // echo "Job Name: ${env.JOB_NAME}"
                 // echo "Job Name: ${env.JAVA_HOME}"
             }
-            
         }
         
         stage('Git Polling'){
             steps{
-                git branch: 'main', credentialsId: 'GitHubKey', url: 'git@github.com:rogecv/calculadora.git'
-                
+                git branch: 'main', credentialsId: 'GitHubKey', url: 'git@github.com:rogecv/calculadora.git'   
             }
         }
         
@@ -37,7 +35,6 @@ pipeline {
                
                // sh "mvn -Dmaven.test.failure.ignore=true clean package " //Unix
             }
-            
             post{
                 success{
                     echo 'Archivar Artefactos'
@@ -61,15 +58,15 @@ pipeline {
 		stage('Notification') {
 			steps {
 			// Notificar por correo electrónico
-			emailext (
-            subject: 'Error en el pipeline de Jenkins',
-            body: 'Se ha detectado un error en el pipeline de Jenkins. Por favor, revisa el registro de Jenkins para obtener más detalles.',
-            to: 'rogelio.cisternas@gmail.com',
-            recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-        )
+                emailext (
+                subject: 'Error en el pipeline de Jenkins',
+                body: 'Se ha detectado un error en el pipeline de Jenkins. Por favor, revisa el registro de Jenkins para obtener más detalles.',
+                to: 'rogelio.cisternas@gmail.com',
+                recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                )      
+            }
+        }
     }
-}
-	}
 	post {
        	always {
 			// Archivar los informes de cobertura
