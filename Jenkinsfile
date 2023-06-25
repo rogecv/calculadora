@@ -1,3 +1,8 @@
+properties([
+    pipelineTriggers([
+        [$class: 'GitHubPushTrigger']
+    ])
+])
 pipeline {
     agent any
     
